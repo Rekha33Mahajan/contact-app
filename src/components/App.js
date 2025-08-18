@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
 import Header from "./Header";
 import AddContact from "./AddContact";
-import ContactCard from "./ContactCard";
+// import ContactCard from "./ContactCard";
 import ContactList from "./ContactList";
 import "./App.css";
 
@@ -53,13 +53,13 @@ function App() {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
-  
+
   return (
     <>
       <Header />
       <AddContact addContactHandler={addContactHandler} />
       <ContactList contacts={contacts} getContactId={removeContactHandler} />
-      <ContactCard/>
+      {/* <ContactCard/> */}
     </>
   );
 }
