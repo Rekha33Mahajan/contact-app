@@ -21,7 +21,7 @@ class AddContact extends React.Component {
     return (
       <form className="ui form container" onSubmit={this.add}>
         <div className="field">
-          <label>First Name</label>
+          <label>Name</label>
           <input
             value={this.state.name}
             onChange={(e) => this.setState({ name: e.target.value })}
