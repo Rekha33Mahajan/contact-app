@@ -1,4 +1,6 @@
 import React from "react";
+import { withNavigation } from "./withNavigation";
+import { Link } from "react-router-dom";
 
 class AddContact extends React.Component {
   state = {
@@ -14,9 +16,9 @@ class AddContact extends React.Component {
     }
     this.props.addContactHandler(this.state);
     this.setState({ name: "", email: "" });
-    console.log(this.state);
+    this.props.navigate("/");
   };
-  
+
   render() {
     return (
       <form className="ui form container" onSubmit={this.add}>
@@ -39,9 +41,14 @@ class AddContact extends React.Component {
         <button className="ui button blue" type="submit">
           Add
         </button>
+        <Link to="/">
+          <button className="ui button blue" type="submit">
+            Back
+          </button>
+        </Link>
       </form>
     );
   }
 }
 
-export default AddContact;
+export default withNavigation(AddContact);

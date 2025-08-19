@@ -3,8 +3,9 @@ import { v4 as uuid } from "uuid";
 import Header from "./Header";
 import AddContact from "./AddContact";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import ContactCard from "./ContactCard";
+//import ContactCard from "./ContactCard";
 import ContactList from "./ContactList";
+import ContactDetail from "./ContactDetail";
 import "./App.css";
 
 function App() {
@@ -22,10 +23,6 @@ function App() {
   // ];
   const LOCAL_STORAGE_KEY = "contacts";
   const [contacts, setContacts] = useState([]);
-  // => {
-  //   const savedContacts = localStorage.getItem(LOCAL_STORAGE_KEY);
-  //   return savedContacts ? JSON.parse(savedContacts) : [];
-  // });
 
   const addContactHandler = (eachContact) => {
     console.log(eachContact);
@@ -60,39 +57,22 @@ function App() {
           <Route
             path="/"
             exact
-            // Component={() => (
-            //   <ContactList
-            //     contacts={contacts}
-            //     getContactId={removeContactHandler}
-            //   />)}
-            // render={(props) => (
-            //   <ContactList
-            //     {...props}
-            //     contacts={contacts}
-            //     getContactId={removeContactHandler}
-            //   />
-            //)}
-            element={
+            Component={(props) => (
               <ContactList
+                {...props}
                 contacts={contacts}
                 getContactId={removeContactHandler}
               />
-            }
+            )}
           ></Route>
           <Route
             path="/add"
-            // Component={() => (
-            //   <AddContact addContactHandler={addContactHandler} />
-            // )}
-            //render={(props) => (
-              // <AddContact {...props} addContactHandler={addContactHandler} />
-              
-            //)}
-            element={<AddContact addContactHandler={addContactHandler} />}
+            Component={(props) => (
+              <AddContact {...props} addContactHandler={addContactHandler} />
+            )}
           ></Route>
-          {/* <AddContact addContactHandler={addContactHandler} />
-      <ContactList contacts={contacts} getContactId={removeContactHandler} /> */}
-          {/* <ContactCard/> */}
+
+          <Route path="/eachContact/:id" element={<ContactDetail />}></Route>
         </Routes>
       </Router>
     </div>
