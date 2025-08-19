@@ -7,4 +7,4 @@ export function withNavigation(Component){
     };
 }
 
-//HOC higher order component for child to parent na
+//HOC higher order component for child to parent
